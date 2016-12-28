@@ -1,18 +1,25 @@
 class ArticlesController < ApplicationController
   
+  ## refers to rake routes, for actions to take
+#    articles GET    /articles(.:format)          articles#index
+#             POST   /articles(.:format)          articles#create
+# new_article GET    /articles/new(.:format)      articles#new
+# edit_article GET    /articles/:id/edit(.:format) articles#edit
+#     article GET    /articles/:id(.:format)      articles#show
+#             PATCH  /articles/:id(.:format)      articles#update
+#             PUT    /articles/:id(.:format)      articles#update
+  ##          DELETE /articles/:id(.:format)      articles#destroy
+  
   def index
     @articles = Article.all
   end
   
   def new
     @article = Article.new
-    
   end
   
   def edit
-    
     @article = Article.find(params[:id])
-    
   end
   
   def create
@@ -24,10 +31,6 @@ class ArticlesController < ApplicationController
     # # redirect_to articles_show(@article)   --WRONG
     #   redirect_to article_path(@article)
       
-    
-    
-    
-    
     if @article.save
       # do something
       
@@ -37,9 +40,6 @@ class ArticlesController < ApplicationController
     else
       render 'new'
     end
-    
-    
-    
   end
   
   
@@ -61,6 +61,13 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Article was successfully deleted"
+    redirect_to articles_path
+      
+  end
   
   private
   def article_params
