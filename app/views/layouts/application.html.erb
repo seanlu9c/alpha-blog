@@ -8,8 +8,19 @@
 </head>
 <body>
 
+  <!--insert NAV-BAR here !!             create PARTIAL here-->
+  <%= render 'layouts/navigation' %>
+  <!--goto http://getbootstrap.com/components/#navbar-->
+  
+  
   <%= render 'layouts/messages' %>
-  <%= yield %>
-
+  
+  <!--https://helloworld-jaysean.c9users.io-->
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+  <%= render 'layouts/footer' %>
 </body>
 </html>
