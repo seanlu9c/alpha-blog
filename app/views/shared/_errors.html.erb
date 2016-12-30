@@ -1,0 +1,29 @@
+
+
+<!--change @article to OBJ-->
+
+<% if obj_1.errors.any? %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">  
+                          <!--to the right 2-col-->
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <%= pluralize(obj_1.errors.count, "error") %>
+            prohibited this article from being saved:
+          </h2>
+  <!--<h2  The following errors prevented the article from getting created-->
+  
+          <div class="panel-body">
+            <ul>
+              <% obj_1.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
