@@ -1,22 +1,54 @@
-<h1>Listing of all articles</h1>
-<p>
-  <%= link_to "Create new article", new_article_path %>
-</p>
+<!--<h1>Listing of all articles</h1>-->
+<!--<p>-->
+<!--  <%= link_to "Create new article", new_article_path %>-->
+<!--</p>-->
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>Title</th>-->
+<!--    <th>Description</th>-->
+<!--  </tr>-->
   
-  <% @articles.each do |arti| %>
-  <tr>
-    <td><%= arti.title %></td>
-    <td><%= arti.description %></td>
-    <td><%= link_to 'Edit', edit_article_path(arti) %></td> 
-    <td><%= link_to 'Show', article_path(arti) %></td>
-    <td><%= link_to 'Delete', article_path(arti), method: :delete, data: {confirm: "Are you sure?"} %></td>
-  </tr>
-  <% end %>
+<!--  <% @articles.each do |arti| %>-->
+<!--  <tr>-->
+<!--    <td><%= arti.title %></td>-->
+<!--    <td><%= arti.description %></td>-->
+<!--    <td><%= link_to 'Edit', edit_article_path(arti) %></td> -->
+<!--    <td><%= link_to 'Show', article_path(arti) %></td>-->
+<!--    <td><%= link_to 'Delete', article_path(arti), method: :delete, data: {confirm: "Are you sure?"} %></td>-->
+<!--  </tr>-->
+<!--  <% end %>-->
   
-</table>
+<!--</table>-->
+
+
+<h1 align="center">Listing of all articles</h1>
+
+<% @articles.each do |arti| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to arti.title, article_path(arti) %>
+        </div>
+
+        <div class="article-body">
+          <%= truncate(arti.description, length: 100) %>
+        </div>
+        
+        <div class="article-actions">
+          <%= link_to 'Edit this article', edit_article_path(arti), class: "btn btn-xs btn-primary" %> 
+          <%= link_to 'Delete this article', article_path(arti), method: :delete, 
+                                        data: {confirm: "Are you sure want to delete the article?"}, 
+                                        class: "btn btn-xs btn-danger" %> 
+      
+        </div>
+          
+          
+          
+      </div>
+    </div>
+  </div>
+
+<% end %>
+  
