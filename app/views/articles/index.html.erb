@@ -34,6 +34,22 @@
 
         <div class="article-body">
           <%= truncate(arti.description, length: 100) %>
+          
+          <!--arti.user is nil:NilClass << old data of null user_id-->
+          <!--add "if arti.user"    if this is true, show username-->
+          <!--<small>Created by: <%= arti.user.username if arti.user%>,-->
+          <!--                  <%= time_ago_in_words(arti.created_at) %> ago,-->
+          <!--      Last updated: <%= time_ago_in_words(arti.updated_at) %> ago-->
+          <!--</small>-->
+          
+          <!--adding styling-->
+          <div class="article-meta-details">
+            <small>Created by: <%= arti.user.username if arti.user%>,
+                              <%= time_ago_in_words(arti.created_at) %> ago,
+                  Last updated: <%= time_ago_in_words(arti.updated_at) %> ago
+            </small>
+          </div>
+          
         </div>
         
         <div class="article-actions">
