@@ -24,9 +24,11 @@ class ArticlesController < ApplicationController
   end
   
   def create
+    debugger
     # render plain: params[:article].inspect
     
     @article = Article.new(article_params)
+    @article.user = User.first
     # @article.save
     
     # # redirect_to articles_show(@article)   --WRONG
