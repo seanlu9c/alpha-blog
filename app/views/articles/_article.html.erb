@@ -1,0 +1,34 @@
+
+<!--Taken from index.html.erb-->
+<!-- @articles.each do |arti|  <<<<<  ruby tag will cause error:   -->
+<% obj.each do |arti| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to arti.title, article_path(arti) %>
+        </div>
+
+        <div class="article-body">
+          <%= truncate(arti.description, length: 100) %>
+
+          <!--adding styling-->
+          <div class="article-meta-details">
+            <small>Created by: <%= arti.user.username if arti.user%>,
+                              <%= time_ago_in_words(arti.created_at) %> ago,
+                  Last updated: <%= time_ago_in_words(arti.updated_at) %> ago
+            </small>
+          </div>
+          
+        </div>
+        
+        <div class="article-actions">
+          <%= link_to 'Edit this article', edit_article_path(arti), class: "btn btn-xs btn-primary" %> 
+          <%= link_to 'Delete this article', article_path(arti), method: :delete, 
+                                        data: {confirm: "Are you sure want to delete the article?"}, 
+                                        class: "btn btn-xs btn-danger" %> 
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
