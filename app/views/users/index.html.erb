@@ -13,6 +13,12 @@
             <%= link_to u5.username, user_path(u5) %>
           </li>
           <li><small><%= pluralize(u5.articles.count, "article") if u5.articles %></small></li>
+          
+          <% if logged_in? and current_user.admin? %>
+            <li><%= link_to "Delete this user", user_path(u5), method: :delete,
+            data: { confirm: "Are you sure you want to delete this user and all its articles?" } %></li>
+          <% end %>
+          
         </div>
       </div>
     </ul>
