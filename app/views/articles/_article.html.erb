@@ -22,6 +22,10 @@
           
         </div>
         
+        <% if arti.categories.any? %>
+        <p>Categories: <%= render arti.categories %></p>
+        <% end %>
+        
         <!--< if logged_in? && current_user == arti.user %>-->
         <% if logged_in? && (current_user == arti.user || current_user.admin?) %>
         

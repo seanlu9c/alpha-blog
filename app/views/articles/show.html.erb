@@ -44,6 +44,15 @@
   <h4 class="center descr"><strong>Description:</strong></h4>
   <hr>
   <%= simple_format(@article.description) %>
+  
+  
+  <!-- Lect 148   shortcut than do ||    -->
+  <% if @article.categories.any? %>
+    <p>Categories: <%= render @article.categories %></p>
+  <% end %>
+
+  
+  
   <div class="article-actions">
     
     <!--< if logged_in? && current_user == @article.user %>-->
