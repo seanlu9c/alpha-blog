@@ -20,6 +20,29 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
+  
+  ## edit form submission will be  handle by update action
+  ## edit form submission will be  handle by update action
+  ## edit form submission will be  handle by update action
+  def edit 
+    @category = Category.find(params[:id])
+
+  end
+  
+  def update
+    # debugger
+    
+    @category = Category.find(params[:id])
+    if @category.update(cate_params)
+      flash[:success] = "Category name was successfully updated"
+      redirect_to category_path(@category)
+    else
+      render 'edit'
+    end
+
+  end
+  
+  
 
   def show
     @category = Category.find(params[:id])
@@ -31,9 +54,11 @@ class CategoriesController < ApplicationController
   def cate_params
     params.require(:category).permit(:name)
   end
+  
   def require_admin
     if !logged_in?  || (logged_in? and !current_user.admin?)
-      flash.now[:danger] = "Only admins can perform that action"
+      # flash.now[:danger] = "Only admins can perform that action"   >> cause it to hide message !!
+      flash[:danger] = "Only admins can perform that action"
       redirect_to categories_path
     end
   end
